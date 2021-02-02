@@ -1,3 +1,12 @@
+# Projet fonctionnel avec Sonarqube sur Docker
+
+génerer le rapport de couverture
+```mvn clean test```
+
+lancer sonarqube
+```mvn sonar:sonar ^-Dsonar.projectKey=refactoringwithmetrics ^-Dsonar.host.url=http://localhost:9000 ^-Dsonar.login=my-token```
+
+
 # Refactoring, Static Analysis and Code Metrics
 
 ##Step 1. Find a refactoring kata

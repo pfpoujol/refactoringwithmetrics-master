@@ -53,8 +53,8 @@ public class Trivia {
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
-	    logger.info(playerName + " was added");
-	    logger.info("They are player number " + players.size());
+	    System.out.println(playerName + " was added");
+	    System.out.println("They are player number " + players.size());
 		return true;
 	}
 	
@@ -63,24 +63,24 @@ public class Trivia {
 	}
 
 	public void roll(int roll) {
-		logger.info(players.get(currentPlayer) + " is the current player");
-		logger.info("They have rolled a " + roll);
+		System.out.println(players.get(currentPlayer) + " is the current player");
+		System.out.println("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 				
-				logger.info(players.get(currentPlayer) + " is getting out of the penalty box");
+				System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
 				places[currentPlayer] = places[currentPlayer] + roll;
 				if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 				
-				logger.info(players.get(currentPlayer) 
+				System.out.println(players.get(currentPlayer) 
 						+ "'s new location is " 
 						+ places[currentPlayer]);
-				logger.info("The category is " + currentCategory());
+				System.out.println("The category is " + currentCategory());
 				askQuestion();
 			} else {
-				logger.info(players.get(currentPlayer) + " is not getting out of the penalty box");
+				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
 				}
 			
@@ -89,24 +89,24 @@ public class Trivia {
 			places[currentPlayer] = places[currentPlayer] + roll;
 			if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 			
-			logger.info(players.get(currentPlayer) 
+			System.out.println(players.get(currentPlayer) 
 					+ "'s new location is " 
 					+ places[currentPlayer]);
-			logger.info("The category is " + currentCategory());
+			System.out.println("The category is " + currentCategory());
 			askQuestion();
 		}
 		
 	}
 
-	private void askQuestion() {
+	public void askQuestion() {
 		if (currentCategory().equals(POP))
-			logger.info(popQuestions.removeFirst());
+			System.out.println(popQuestions.removeFirst());
 		if (currentCategory().equals(SCIENCE))
-			logger.info(scienceQuestions.removeFirst());
+			System.out.println(scienceQuestions.removeFirst());
 		if (currentCategory().equals(SPORTS))
-			logger.info(sportsQuestions.removeFirst());
+			System.out.println(sportsQuestions.removeFirst());
 		if (currentCategory().equals(ROCK))
-			logger.info(rockQuestions.removeFirst());		
+			System.out.println(rockQuestions.removeFirst());		
 	}
 	
 	
@@ -121,9 +121,9 @@ public class Trivia {
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
-				logger.info("Answer was correct!!!!");
+				System.out.println("Answer was correct!!!!");
 				purses[currentPlayer]++;
-				logger.info(players.get(currentPlayer) 
+				System.out.println(players.get(currentPlayer) 
 						+ " now has "
 						+ purses[currentPlayer]
 						+ " Gold Coins.");
@@ -142,10 +142,10 @@ public class Trivia {
 			
 			
 		} else {
-		
-			logger.info("Answer was corrent!!!!");
+			System.out.println("coucou");
+			System.out.println("Answer was corrent!!!!");
 			purses[currentPlayer]++;
-			logger.info(players.get(currentPlayer) 
+			System.out.println(players.get(currentPlayer) 
 					+ " now has "
 					+ purses[currentPlayer]
 					+ " Gold Coins.");
@@ -159,8 +159,8 @@ public class Trivia {
 	}
 	
 	public boolean wrongAnswer(){
-		logger.info("Question was incorrectly answered");
-		logger.info(players.get(currentPlayer)+ " was sent to the penalty box");
+		System.out.println("Question was incorrectly answered");
+		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 		
 		currentPlayer++;
